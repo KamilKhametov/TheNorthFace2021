@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">The North Face</string>
+    <string name="title_toolbar_main_act">The North Face</string>
+    <string name="title_for_btn_main">Перейти к каталогу</string>
+    <string name="title_toolbar_catalog_act">Каталог</string>
+    <string name="title_toolbar_favorites_act">Избранное</string>
+    <string name="go_buy">Здесь пока что пусто)</string>
+</resources>

@@ -1,0 +1,73 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageProduct"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginLeft="5dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/priceProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="210dp"
+            android:text="TextView"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/descProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleProduct"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:paddingTop="5dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/titleProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="235dp"
+            android:text="TextView"
+            android:textColor="#000000" />
+
+        <RatingBar
+            android:id="@+id/ratingBarProduct"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descProduct"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:theme="@style/RatingBar" />
+
+        <ImageView
+            android:id="@+id/imageLike"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="210dp"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_unlike" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

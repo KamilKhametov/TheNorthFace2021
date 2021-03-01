@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="view.MainActivity">
+
+    <Button
+        android:id="@+id/btnGoCatalog"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="470dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_for_btn_main"
+        android:drawableRight="@drawable/ic_line"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="15dp"
+        android:text="@string/title_for_btn_main"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="620dp" />
+</RelativeLayout>
