@@ -54,17 +54,19 @@ public class CatalogActivity extends AppCompatActivity implements MainView, Prod
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
 
+        // Нахождение по id
+        recyclerView = findViewById(R.id.recyclerView);
+        progressBar = findViewById(R.id.progressBar);
+
         // Инициализация адаптера
-        adapterCatalog = new AdapterCatalog(this);
+        initAdapterCatalog();
         // FirebaseFirestore
-        firestore = FirebaseFirestore.getInstance();
+        FireStoreGetInstance();
         //SharedPreferences
         preferences = getSharedPreferences("NICE", MODE_PRIVATE);
         // Database
         reference = FirebaseDatabase.getInstance().getReference().child("ShopApp");
         // RecyclerView and Adapter init
-        recyclerView = findViewById(R.id.recyclerView);
-        progressBar = findViewById(R.id.progressBar);
         recyclerView.setAdapter(adapterCatalog);
         modelList = new ArrayList<>();
     }
@@ -96,6 +98,14 @@ public class CatalogActivity extends AppCompatActivity implements MainView, Prod
         mainPresenter.getDataFromFB(myModel);
     }
 
+    public void initAdapterCatalog(){
+        adapterCatalog = new AdapterCatalog(this);
+    }
+
+    public void FireStoreGetInstance(){
+        firestore = FirebaseFirestore.getInstance();
+    }
+
     @Override
     public void showProgressBar() {
         progressBar.setVisibility(View.VISIBLE);
@@ -123,6 +133,10 @@ public class CatalogActivity extends AppCompatActivity implements MainView, Prod
         Toast.makeText(this, "Товар добавлен в корзину)", Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void notifyRemove(int position) {
+        modelList.remove(position);
+    }
 
     // Установка иконки "Корзина" на toolbar
     @Override

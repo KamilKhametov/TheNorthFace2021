@@ -37,26 +37,41 @@ public class FavoritesActivity extends AppCompatActivity implements ProductEvent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
 
-        // Закреп actionBar
-        setActionBarTitleFavorites();
-
-        // Инициализация полей
+        // Нахождение по id
         progressBarFav = findViewById(R.id.progressBarFav);
         recyclerFav = findViewById(R.id.recyclerFav);
-        recyclerFav.setHasFixedSize(true);
-        recyclerFav.setLayoutManager(layoutManager);
-
-        firestore = FirebaseFirestore.getInstance();
+        // Закреп actionBar
+        setActionBarTitleFavorites();
+        // Установка RecyclerView
+        setRecyclerViewFav();
+        // Firebase getInstance
+        FBGetInstance();
         list = new ArrayList<>();
-        adapterCatalog = new AdapterCatalog(this);
-        recyclerFav.setAdapter(adapterCatalog);
-
+        // Инициализация Adapter
+        initAdapter();
         // Инициализация MainPresenter
-        mainPresenter = new MainPresenter(list, firestore, this);
-
+        initPresenter();
         // Получение данных с FirebaseFirestore
         getDataFromFirestore();
 
+    }
+
+    public void initPresenter(){
+        mainPresenter = new MainPresenter(list, firestore, this);
+    }
+
+    public void initAdapter(){
+        adapterCatalog = new AdapterCatalog(this);
+        recyclerFav.setAdapter(adapterCatalog);
+    }
+
+    public void setRecyclerViewFav(){
+        recyclerFav.setHasFixedSize(true);
+        recyclerFav.setLayoutManager(layoutManager);
+    }
+
+    public void FBGetInstance(){
+        firestore = FirebaseFirestore.getInstance();
     }
 
     private void setActionBarTitleFavorites() {
@@ -104,5 +119,11 @@ public class FavoritesActivity extends AppCompatActivity implements ProductEvent
     @Override
     public void favoritesSuccess() {
         Toast.makeText(this, "Товар добавлен в корзину)", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void notifyRemove(int position) {
+        list.remove(position);
+        getDataFromFirestore();
     }
 }

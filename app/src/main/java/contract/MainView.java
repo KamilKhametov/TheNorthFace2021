@@ -11,4 +11,5 @@ public interface MainView {
     void applyCatalogData(List<MyModel> clothes);
     void showError(String message);
     void favoritesSuccess();
+    void notifyRemove(int position);
 }

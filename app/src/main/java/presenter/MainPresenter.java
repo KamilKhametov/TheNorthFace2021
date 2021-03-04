@@ -104,7 +104,7 @@ public class MainPresenter implements MainPresenterInterface {
         firestore.collection("TheNorthFaceCollection").document(myModel.getIdProd()).delete()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        getDataFromFirestore();
+                        viewState.notifyRemove(position);
                     } else {
                         viewState.showError("Error");
                     }
@@ -137,15 +137,12 @@ public class MainPresenter implements MainPresenterInterface {
                         for (DocumentSnapshot snapshot : task.getResult()) {
                             MyModel myModel = new MyModel(snapshot.getString("id"), snapshot.getString("image"), snapshot.getString("title"), snapshot.getString("desc"), snapshot.getString("price"), snapshot.getString("rating"));
                             modelList.add(myModel);
-                            viewState.applyCatalogData(modelList);
-
                         }
+                        viewState.applyCatalogData(modelList);
                         viewState.hideProgressBar();
                         if(modelList.size() == 0){
                             viewState.hideProgressBar();
                         }
-
-
                     }
                 }).addOnFailureListener(e -> {
             viewState.showError("Error");
